@@ -11,6 +11,11 @@ const fetchGallery = new ServerSequest();
 
 const gallerySimpleLightbox = new SimpleLightbox('.gallery a');
 
+const optionObservern = {
+  rootMargin: '0px 0px 200px 0px',
+  threshold: 0.0,
+};
+
 const loadContent = () => {
   const { height: cardHeight } =
     galleryEl.firstElementChild.getBoundingClientRect();
@@ -52,10 +57,7 @@ const infiniteScrollObserver = () => {
     }
   };
 
-  const observer = new IntersectionObserver(callback, {
-    rootMargin: '0px 0px 200px 0px',
-    threshold: 0.0,
-  });
+  const observer = new IntersectionObserver(callback, { optionObservern });
   observer.observe(document.querySelector('.photo-card:last-child'));
 };
 
