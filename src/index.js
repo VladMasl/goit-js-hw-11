@@ -67,6 +67,10 @@ const onFormSubmit = async e => {
   fetchGallery.resetPage();
 
   const { searchQuery } = e.currentTarget.elements;
+  if(searchQuery.value.trim()===""){
+    Notify.warning(`Please! Enter the request for the desired image.`)
+    return
+  }
   fetchGallery.setRequest(searchQuery.value.trim());
   await fetchRenderEnd();
   if (fetchGallery.getTotalHits() === 0) {
